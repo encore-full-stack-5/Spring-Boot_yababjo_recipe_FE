@@ -12,12 +12,12 @@ const Navigator = () => {
           </li>
 
           <li className="flex-1">
-            <button className="w-full px-4 py-3 rounded-lg text-2xl  dark:hover:text-yellow-300">
+            <button className="w-full px-4 py-3 rounded-lg text-2xl  hover:text-yellow-300">
               분류
             </button>
           </li>
           <li className="flex-1">
-            <button className="w-full px-4 py-3 rounded-lg text-2xl dark:hover:text-yellow-300">
+            <button className="w-full px-4 py-3 rounded-lg text-2xl hover:text-yellow-300">
               랭킹
             </button>
           </li>
