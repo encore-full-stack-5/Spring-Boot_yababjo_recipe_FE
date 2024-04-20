@@ -41,7 +41,7 @@ const TypePageNav = () => {
                   볶음
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  끊이기
+                  끓이기
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
                   부침
