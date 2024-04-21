@@ -7,7 +7,7 @@ const RecipeFoodName = () => {
       <input
         className="pr-20 w-full bg-gray-50 border border-gray-300 rounded-md focus:border-blue-500"
         type="text"
-        placeholder="예) 1줄 소개"
+        placeholder="예) 음식명"
       />
     </div>
   );

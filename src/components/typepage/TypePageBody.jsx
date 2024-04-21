@@ -1,8 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 // 1줄 당 레시피 4개
 
 const TypePageBody = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
   return (
     <div className="p-6">
       <div className="py-3 text-2xl">카테고리 별 레시피 목록</div>
@@ -10,7 +16,11 @@ const TypePageBody = () => {
         <li className="float-left pr-12 pb-12">
           {/* 사진란 */}
           <div>
-            <img src="https://via.placeholder.com/200" alt="" />
+            <img
+              src="https://via.placeholder.com/200"
+              alt=""
+              onClick={() => handleNavigate("/recipe")}
+            />
           </div>
 
           {/* 설명란 (제목,작성자닉네임,별점평균,조회수) */}

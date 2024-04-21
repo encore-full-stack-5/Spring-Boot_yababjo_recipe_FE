@@ -72,7 +72,7 @@ const AddRecipeInfo = () => {
         <TagInput />
       </div>
 
-      <div className="p-4 border border-gray-200 font-bold text-xl bg-zinc-100">
+      <div className="p-4 border border-gray-200 font-bold text-xl bg-lime-100">
         <button>저장</button>
         <button className="pl-10" onClick={() => handleNavigate("/")}>
           취소
