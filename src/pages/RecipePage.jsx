@@ -11,8 +11,9 @@ function RecipePage() {
   return (
     <>
       <Header></Header>
+
       <div className="p-2"></div>
-      <div className="p-10">
+      <div className="p-10 text-center">
         <div>
           <img
             className="m-auto"
@@ -20,10 +21,10 @@ function RecipePage() {
             alt=""
           />
         </div>
-        <div className="m-auto text-center">작성자명</div>
+        <div className="">작성자명</div>
         <div className="">레시피명</div>
-        <div className="">한 줄 설명</div>
-        <div className="flex">
+        <div className="">조리 팁</div>
+        <div className="flex m-auto">
           <div className="pr-10">몇 인분 </div>
           <div className="pr-10">조리 시간 </div>
           <div className="pr-10">난이도 </div>
