@@ -7,7 +7,8 @@ import RankingPage from "./pages/RankingPage";
 import SearchResultPage from "./pages/SearchResultPage";
 import TypeRecipePage from "./pages/TypeRecipePage";
 import MainPage from "./pages/MainPage";
-import SignUpPage from "./pages/SignUpPage";
+import AccountInfo from "./pages/AccountInfo";
+import RecipePage from "./pages/RecipePage";
 
 function App() {
   return (
@@ -15,13 +16,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/searchresult" element={<SearchResultPage />} />
           <Route path="/typerecipe" element={<TypeRecipePage />} />
           <Route path="/addrecipe" element={<AddRecipePage />} />
+          <Route path="/accountinfo" element={<AccountInfo />} />
+          <Route path="/recipe" element={<RecipePage />} />
         </Routes>
       </BrowserRouter>
     </>
