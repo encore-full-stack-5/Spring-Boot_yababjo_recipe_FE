@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import "../LoginSignup.css";
+import "../LoginSignUp.css";
 import user_icon from "../assets/icon/email.png";
 import email_icon from "../assets/icon/password.png";
 import password_icon from "../assets/icon/person.png";
+import { login } from "../api/auth";
 const LoginSignup = () => {
   const [action, setAction] = useState("Login");
+  const [message, setMessage] = useState("");
   const handleLogin = async (e) => {
     e.preventDefault();
     const nickName = document.getElementById("nickname").value;
-    const password = document.getEle;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const res = await login({ nickName, password });
+    if (res.status === 200) {
+      setMessage("로그인 완료");
+    }
   };
   return (
     <div className={"container"}>
@@ -74,7 +81,8 @@ const LoginSignup = () => {
         <div
           className={action === "Sign Up" ? "submit gray" : "submit"}
           onClick={() => {
-            setAction("Login");
+            // setAction("Login");
+            handleLogin;
           }}
         >
           Login
