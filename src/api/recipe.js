@@ -9,3 +9,8 @@ export const getrecipeByTypeId = async (typeId) => {
   const res = await api("/api/vi/recipe/type/" + typeId, "get");
   return res;
 };
+
+export const getRecipesSortedByCreateAt = async () => {
+  const res = await api("/api/vi/recipe/recently", "get");
+  return res;
+};
