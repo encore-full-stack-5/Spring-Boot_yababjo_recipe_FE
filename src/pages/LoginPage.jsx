@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import "../../src/LoginSignUp.css";
+import "../LoginSignup.css";
 import user_icon from "../assets/icon/email.png";
 import email_icon from "../assets/icon/password.png";
 import password_icon from "../assets/icon/person.png";
-
 const LoginSignup = () => {
   const [action, setAction] = useState("Login");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const nickName = document.getElementById("nickname").value;
+    const password = document.getEle;
+  };
   return (
     <div className={"container"}>
       <div className="header">
@@ -17,32 +21,38 @@ const LoginSignup = () => {
           <>
             <div className="input">
               <img src={email_icon} alt=""></img>
-              <input type="email" placeholder="Nickname"></input>
+              <input id="nickname" type="text" placeholder="Nickname"></input>
             </div>
             <div className="input">
               <img src={password_icon} alt=""></img>
-              <input type="password" placeholder="Password"></input>
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+              ></input>
             </div>
-
             <div />
           </>
         ) : (
           <>
             <div className="input">
               <img src={user_icon} alt=""></img>
-              <input type="text" placeholder="Name"></input>
+              <input id="nickname" type="text" placeholder="Nickname"></input>
             </div>
             <div className="input">
               <img src={email_icon} alt=""></img>
-              <input type="email" placeholder="Email"></input>
+              <input id="email" type="email" placeholder="Email"></input>
             </div>
             <div className="input">
               <img src={password_icon} alt=""></img>
-              <input type="password" placeholder="Password"></input>
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+              ></input>
             </div>
           </>
         )}
-
         {/* <div className="input">
           <img src={email_icon} alt=""></img>
           <input type="email" placeholder="Email"></input>
@@ -52,7 +62,6 @@ const LoginSignup = () => {
           <input type="password" placeholder="Password"></input>
         </div> */}
       </div>
-
       <div className="submit-container">
         <div
           className={action === "Login" ? "submit gray" : "submit"}
@@ -74,5 +83,4 @@ const LoginSignup = () => {
     </div>
   );
 };
-
 export default LoginSignup;
