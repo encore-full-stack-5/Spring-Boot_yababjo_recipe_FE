@@ -15,9 +15,9 @@ const LoginSignup = () => {
     try {
       const res = await login({ nickName, password });
       if (res.status === 200) {
-        alert("로그인 완료");
+        alert("로그인 완료!");
       } else {
-        alert("로그인 실패");
+        alert("로그인 실패!");
       }
     } catch (error) {
       console.error("로그인 요청 에러:", error);
