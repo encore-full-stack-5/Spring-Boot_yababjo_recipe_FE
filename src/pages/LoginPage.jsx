@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-import "../LoginSignup.css";
+import "../../src/LoginSignUp.css";
 import user_icon from "../assets/icon/email.png";
 import email_icon from "../assets/icon/password.png";
 import password_icon from "../assets/icon/person.png";
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Login");
-  const [nickName, setNickname] = useState("");
-  const [password, setPassword] = useState("");
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const nickName = document.getElementById("nickname").value;
-  };
-
   return (
     <div className={"container"}>
       <div className="header">
@@ -24,15 +17,11 @@ const LoginSignup = () => {
           <>
             <div className="input">
               <img src={email_icon} alt=""></img>
-              <input id="nickname" type="text" placeholder="Nickname"></input>
+              <input type="email" placeholder="Nickname"></input>
             </div>
             <div className="input">
               <img src={password_icon} alt=""></img>
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-              ></input>
+              <input type="password" placeholder="Password"></input>
             </div>
 
             <div />
@@ -41,19 +30,15 @@ const LoginSignup = () => {
           <>
             <div className="input">
               <img src={user_icon} alt=""></img>
-              <input id="name" type="text" placeholder="Name"></input>
+              <input type="text" placeholder="Name"></input>
             </div>
             <div className="input">
               <img src={email_icon} alt=""></img>
-              <input id="email" type="email" placeholder="Email"></input>
+              <input type="email" placeholder="Email"></input>
             </div>
             <div className="input">
               <img src={password_icon} alt=""></img>
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-              ></input>
+              <input type="password" placeholder="Password"></input>
             </div>
           </>
         )}

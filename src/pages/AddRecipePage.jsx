@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import AddRecipeInfo from "../components/addrecipecomp/AddRecipeInfo";
+import Header from "../components/header/Header";
 import axios from "axios";
 
 const AddRecipePage = () => {
@@ -23,7 +25,12 @@ const AddRecipePage = () => {
     fetchData();
   }, []);
 
-  return <div>리액트 컴포넌트</div>;
+  return (
+    <>
+      <Header />
+      <AddRecipeInfo />
+    </>
+  );
 };
 
 export default AddRecipePage;
