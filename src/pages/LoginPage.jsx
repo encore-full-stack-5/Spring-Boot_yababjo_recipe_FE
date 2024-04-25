@@ -111,7 +111,7 @@ const LoginSignup = () => {
         {action === "Login" ? (
           <>
             <div
-              className="submit  gray"
+              className="submit"
               onClick={() => {
                 handleLogin();
               }}
@@ -119,7 +119,7 @@ const LoginSignup = () => {
               Login
             </div>
             <div
-              className="submit"
+              className="submit-gray"
               onClick={() => {
                 setAction("Sign up");
               }}
@@ -130,7 +130,7 @@ const LoginSignup = () => {
         ) : (
           <>
             <div
-              className="submit gray"
+              className="submit-gray"
               onClick={() => {
                 setAction("Login");
               }}

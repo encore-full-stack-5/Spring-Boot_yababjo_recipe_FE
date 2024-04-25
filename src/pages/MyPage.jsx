@@ -41,7 +41,6 @@ const MyPage = () => {
                   </div>
                 </div>
               </form>{" "}
-              */
             </>
           ) : (
             <>
