@@ -13,7 +13,7 @@ import CookingOrders from "./recipe_orders/CookingOrders";
 import TagInput from "./recipe_Tag/TagInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { addRecipe } from "../../api/recipe";
+import { addIngredient, addRecipe } from "../../api/recipe";
 
 const AddRecipeInfo = () => {
   const [recipeTitle, setRecipeTitle] = useState(null);
@@ -43,6 +43,12 @@ const AddRecipeInfo = () => {
         cookingTime,
         cookingTip,
       });
+      // const ingredients = await addIngredient({
+      //   name,
+      //   type,
+      //   ingredientsMeasurement,
+      //   description
+      // });
       if (res.status === 200) {
         alert("레시피 등록 성공!");
         handleNavigate("/");
