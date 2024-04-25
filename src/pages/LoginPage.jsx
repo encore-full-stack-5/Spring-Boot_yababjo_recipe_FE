@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "../LoginSignup.css";
+import "../../src/LoginSignup.css";
 import user_icon from "../assets/icon/email.png";
 import email_icon from "../assets/icon/password.png";
 import password_icon from "../assets/icon/person.png";
 import { login } from "../api/auth";
+import { signup } from "../api/auth";
 
 const LoginSignup = () => {
   const [action, setAction] = useState("Login");
@@ -25,8 +26,19 @@ const LoginSignup = () => {
     }
   };
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     // 회원가입 처리 로직 추가
+    try {
+      const res = await signup({ nickName, email, password });
+      if (res.status === 200) {
+        alert("회원가입 완료!");
+      } else {
+        alert("회원가입 실패");
+      }
+    } catch (error) {
+      console.error("회원가입 요청 에러:", error);
+      alert("회원가입 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -39,7 +51,7 @@ const LoginSignup = () => {
         {action === "Login" ? (
           <>
             <div className="input">
-              <img src={email_icon} alt=""></img>
+              <img src={password_icon} alt=""></img>
               <input
                 type="text"
                 placeholder="NickName"
@@ -48,7 +60,7 @@ const LoginSignup = () => {
               ></input>
             </div>
             <div className="input">
-              <img src={password_icon} alt=""></img>
+              <img src={email_icon} alt=""></img>
               <input
                 type="password"
                 placeholder="Password"
@@ -60,7 +72,7 @@ const LoginSignup = () => {
         ) : (
           <>
             <div className="input">
-              <img src={user_icon} alt=""></img>
+              <img src={password_icon} alt=""></img>
               <input
                 type="text"
                 placeholder="NickName"
@@ -69,7 +81,7 @@ const LoginSignup = () => {
               ></input>
             </div>
             <div className="input">
-              <img src={email_icon} alt=""></img>
+              <img src={user_icon} alt=""></img>
               <input
                 type="email"
                 placeholder="Email"
@@ -78,7 +90,7 @@ const LoginSignup = () => {
               ></input>
             </div>
             <div className="input">
-              <img src={password_icon} alt=""></img>
+              <img src={email_icon} alt=""></img>
               <input
                 type="password"
                 placeholder="Password"
@@ -91,8 +103,10 @@ const LoginSignup = () => {
       </div>
       <div className="submit-container">
         <div
-          className={action === "Login" ? "submit gray" : "submit"}
-          onClick={() => setAction("Sign Up")}
+          className="submit"
+          onClick={() => {
+            setAction("Sign Up");
+          }}
         >
           Sign Up
         </div>
@@ -100,7 +114,7 @@ const LoginSignup = () => {
           className="submit"
           onClick={action === "Login" ? handleLogin : handleSignup}
         >
-          {action}
+          Log in
         </div>
       </div>
     </div>
