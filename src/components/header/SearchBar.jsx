@@ -34,9 +34,9 @@ const SearchBar = () => {
       <button
         className="m-2 rounded  bg-lime-700 px-5 py-2 text-white hover:text-yellow-300"
         type=""
-        onClick={() => handleNavigate("/accountinfo")}
+        onClick={() => handleNavigate("/mypage")}
       >
-        회원정보 수정
+        내 페이지
       </button>
     </div>
   );

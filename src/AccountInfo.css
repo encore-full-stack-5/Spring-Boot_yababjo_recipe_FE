@@ -30,7 +30,7 @@
   font-weight: 500;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -46,4 +46,39 @@
 .box-line {
   border-bottom: 1px solid #dadcdd;
   margin-bottom: 15px;
+}
+
+.mng-account-edit-input {
+  height: 30px;
+  width: 250px;
+  background: #faf6f6;
+  border: 1px solid #61b81f;
+  color: rgb(26, 17, 17);
+  font-size: 19px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  width: 100px;
+  height: 40px;
+  color: #f6faf2;
+  background-color: #90d7a4;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
