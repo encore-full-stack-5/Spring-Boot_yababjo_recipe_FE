@@ -12,13 +12,49 @@ import SauceAdd from "./recipe_ingredients/SauceAdd";
 import CookingOrders from "./recipe_orders/CookingOrders";
 import TagInput from "./recipe_Tag/TagInput";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { addRecipe } from "../../api/recipe";
 
 const AddRecipeInfo = () => {
+  const [recipeTitle, setRecipeTitle] = useState(null);
+  const [foodName, setFoodName] = useState(null);
+  const [cookingMethodId, setCookingMethodId] = useState(1);
+  const [typeId, setTypeId] = useState(1);
+  const [servingSize, setServingSize] = useState(0);
+  const [level, setLevel] = useState(0);
+  const [cookingTime, setCookingTime] = useState(0);
+  const [cookingTip, setCookingTip] = useState("");
+
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(path);
   };
+
+  const addRecipeHandler = async () => {
+    try {
+      const res = await addRecipe({
+        recipeTitle,
+        foodName,
+        cookingMethodId,
+        typeId,
+        servingSize,
+        level,
+        cookingTime,
+        cookingTip,
+      });
+      if (res.status === 200) {
+        alert("레시피 등록 성공!");
+        handleNavigate("/");
+      } else {
+        alert("레시피 등록 실패...");
+      }
+    } catch (error) {
+      console.error("레시피 등록 오류", error);
+      alert("레시피 등록 실패.. 빈 칸이 있는지 확인하세요");
+    }
+  };
+
   return (
     <div>
       <div className="p-2"></div>
@@ -27,18 +63,30 @@ const AddRecipeInfo = () => {
       </div>
 
       <div className="px-10">
-        <RecipeTitle />
-        <RecipeFoodName />
+        <RecipeTitle
+          recipeTitle={recipeTitle}
+          setRecipeTitle={setRecipeTitle}
+        />
+        <RecipeFoodName foodName={foodName} setFoodName={setFoodName} />
 
         <div className="flex pb-9">
-          <RecipeCategory_Type />
-          <RecipeCategory_method />
+          <RecipeCategory_Type typeId={typeId} setTypeId={setTypeId} />
+          <RecipeCategory_method
+            cookingMethodId={cookingMethodId}
+            setCookingMethodId={setCookingMethodId}
+          />
         </div>
 
         <div className="flex pb-9">
-          <RecipeServing />
-          <RecipeDifficulty />
-          <RecipeCookingTime />
+          <RecipeServing
+            servingSize={servingSize}
+            setServingSize={setServingSize}
+          />
+          <RecipeDifficulty level={level} setLevel={setLevel} />
+          <RecipeCookingTime
+            cookingTime={cookingTime}
+            setCookingTime={setCookingTime}
+          />
         </div>
         <div className="p-2"></div>
       </div>
@@ -62,7 +110,7 @@ const AddRecipeInfo = () => {
         요리 팁
       </div>
       <div>
-        <CookingTip />
+        <CookingTip cookingTip={cookingTip} setCookingTip={setCookingTip} />
       </div>
 
       <div className="p-4 border border-gray-200 font-bold text-xl bg-zinc-100">
@@ -73,8 +121,10 @@ const AddRecipeInfo = () => {
       </div>
 
       <div className="p-4 border border-gray-200 font-bold text-xl bg-lime-100">
-        <button>저장</button>
-        <button className="pl-10" onClick={() => handleNavigate("/")}>
+        <button className="pl-10" onClick={addRecipeHandler}>
+          저장
+        </button>
+        <button className="pl-20" onClick={() => handleNavigate("/")}>
           취소
         </button>
       </div>

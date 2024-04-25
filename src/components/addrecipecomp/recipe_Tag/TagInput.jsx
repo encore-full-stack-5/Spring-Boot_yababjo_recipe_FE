@@ -5,12 +5,14 @@ function TagInput() {
   const [input, setInput] = useState("");
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && input) {
+    if (e.key === "Enter" && !e.isComposing && input) {
       // 엔터를 누르면 새 태그 추가
       if (!tags.includes(input)) {
         // 중복 태그 방지
         setTags([...tags, input]);
         setInput(""); // 인풋 초기화
+      } else {
+        alert("중복되는 태그입니다");
       }
     }
   };
@@ -37,7 +39,7 @@ function TagInput() {
           className="border p-2 bg-gray-50"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyPress={handleKeyDown}
           placeholder="태그 추가..."
         />
       </div>
