@@ -18,12 +18,15 @@
   font-size: 16px;
   line-height: 22.85px;
   position: relative;
-  gap: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5px;
 }
 .nav-tab {
   padding-left: 0;
   margin-bottom: 0;
-  width: 160px;
+  width: 400px;
   height: 50px;
   list-style: none;
   background-color: rgb(209, 209, 209);
@@ -102,4 +105,23 @@ form {
 .chef-content-result img {
   max-width: 200px;
   height: auto;
+}
+
+.mypage-text {
+  font-size: 20px;
+}
+
+.mypage-text1 {
+  font-size: 20px;
+}
+
+.my-page-content-btn {
+  padding: 10px 30px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 3px;
+  margin: 0 4px;
+  color: #fff;
+  background-color: #46ae4f;
+  border: 1px solid #497725;
 }
