@@ -13,9 +13,10 @@ import CookingOrders from "./recipe_orders/CookingOrders";
 import TagInput from "./recipe_Tag/TagInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { addIngredient, addRecipe } from "../../api/recipe";
+import { addCookingOrder, addIngredient, addRecipe } from "../../api/recipe";
 
 const AddRecipeInfo = () => {
+  // 레시피 기본 정보
   const [recipeTitle, setRecipeTitle] = useState(null);
   const [foodName, setFoodName] = useState(null);
   const [cookingMethodId, setCookingMethodId] = useState(1);
@@ -24,6 +25,14 @@ const AddRecipeInfo = () => {
   const [level, setLevel] = useState(0);
   const [cookingTime, setCookingTime] = useState(0);
   const [cookingTip, setCookingTip] = useState("");
+
+  // 레시피 조리 순서
+  const [cookingSteps, setCookingSteps] = useState([
+    { id: Date.now(), description: "" },
+  ]); // 조리 순서를 관리할 상태
+  const [order, setOrder] = useState(1);
+  const [instruction, setInstruction] = useState("");
+  const [recipeId, setRecipeId] = useState(null);
 
   const navigate = useNavigate();
 
@@ -43,13 +52,18 @@ const AddRecipeInfo = () => {
         cookingTime,
         cookingTip,
       });
-      // const ingredients = await addIngredient({
-      //   name,
-      //   type,
-      //   ingredientsMeasurement,
-      //   description
-      // });
       if (res.status === 200) {
+        const recipeId = res.data.recipeId;
+        console.log(recipeId);
+        // setRecipeId(recipeId);
+        for (const step of cookingSteps) {
+          await addCookingOrder({
+            recipeId,
+            order: cookingSteps.indexOf(step),
+            instruction: step.description,
+          });
+        }
+        // await addCookingOrderHandler(recipeId); // 조리 순서로 넘어감
         alert("레시피 등록 성공!");
         handleNavigate("/");
       } else {
@@ -60,6 +74,33 @@ const AddRecipeInfo = () => {
       alert("레시피 등록 실패.. 빈 칸이 있는지 확인하세요");
     }
   };
+  // const addCookingOrderHandler = async (recipeId, cookingSteps) => {
+  //   for (const step of cookingSteps) {
+  //     const order = cookingSteps.indexOf(step);
+  //     await addCookingOrder({
+  //       recipeId,
+  //       order,
+  //       instruction: step.description,
+  //     });
+  //   }
+  // };
+  // const addCookingOrderHandler = async (recipeId) => {
+  //   try {
+  //     const orders = await addCookingOrder({
+  //       order,
+  //       instruction,
+  //       recipeId,
+  //     });
+  //     if (orders.status === 200) {
+  //       alert("조리 순서 등록 성공!");
+  //     } else {
+  //       alert("조리 순서 등록 실패...");
+  //     }
+  //   } catch (error) {
+  //     console.error("조리 순서 등록 오류", error);
+  //     alert("조리순서 등록 실패.. 빈 칸이 있는지 확인하세요");
+  //   }
+  // };
 
   return (
     <div>
@@ -109,7 +150,10 @@ const AddRecipeInfo = () => {
         조리 순서
       </div>
       <div>
-        <CookingOrders />
+        <CookingOrders
+          cookingSteps={cookingSteps}
+          setCookingSteps={setCookingSteps}
+        />
       </div>
 
       <div className="p-4 border border-gray-200 font-bold text-xl bg-zinc-100">
