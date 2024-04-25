@@ -96,3 +96,7 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.submit-gray {
+  background-color: #676767;
+}

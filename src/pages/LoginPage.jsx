@@ -102,23 +102,47 @@ const LoginSignup = () => {
         )}
       </div>
       <div className="submit-container">
-        <div
-          className="submit"
-          onClick={() => {
-            setAction("Sign Up");
-          }}
-        >
-          Sign Up
-        </div>
-        <div
-          className="submit"
-          onClick={action === "Login" ? handleLogin : handleSignup}
-        >
-          Log in
-        </div>
+        {action === "Login" ? (
+          <>
+            <div
+              className="submit gray"
+              onClick={() => {
+                handleLogin();
+              }}
+            >
+              Login
+            </div>
+            <div
+              className="submit"
+              onClick={() => {
+                setAction("Sign up");
+              }}
+            >
+              Sign up
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className="submit gray"
+              onClick={() => {
+                setAction("Login");
+              }}
+            >
+              Log in
+            </div>
+            <div
+              className="submit"
+              onClick={() => {
+                handleSignup();
+              }}
+            >
+              Sign up
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
-
 export default LoginSignup;
