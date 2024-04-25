@@ -53,7 +53,8 @@ const AddRecipeInfo = () => {
         cookingTip,
       });
       if (res.status === 200) {
-        const recipeId = res.data.id;
+        const recipeId = res.data.recipeId;
+        console.log(recipeId);
         // setRecipeId(recipeId);
         for (const step of cookingSteps) {
           await addCookingOrder({

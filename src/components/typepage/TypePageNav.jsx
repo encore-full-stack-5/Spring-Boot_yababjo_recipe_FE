@@ -21,16 +21,16 @@ const TypePageNav = () => {
               <tr className="block px-5 py-3 ">
                 <td className="p-3 hover:text-lime-500 cursor-pointer">전체</td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  밑반찬
+                  <button>밑반찬</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  메인반찬
+                  <button>메인반찬</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  국/찌개
+                  <button>국/찌개</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  디저트
+                  <button>디저트</button>
                 </td>
               </tr>
               <tr className="block px-5 p-3">
@@ -38,19 +38,19 @@ const TypePageNav = () => {
                   전체
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  볶음
+                  <button>볶음</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  끓이기
+                  <button>끓이기</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  부침
+                  <button>부침</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  튀김
+                  <button>튀김</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  무침
+                  <button>무침</button>
                 </td>
               </tr>
             </tbody>
