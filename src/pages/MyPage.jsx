@@ -4,10 +4,12 @@ import "../Mypage.css";
 import Header from "../components/header/Header";
 import { useNavigate } from "react-router-dom";
 import { getRecipesByUserId } from "../api/recipe";
+import { getByUserId } from "../api/comment";
 
 const MyPage = () => {
   const [action, setAction] = useState("");
   const [data, setData] = useState([]);
+  const [comment, setComment] = useState([]);
   const navigate = useNavigate();
   const handleNavigate = (path) => {
     navigate(path);
@@ -20,11 +22,21 @@ const MyPage = () => {
       console.error("Error fetching recipe data:", error);
     }
   };
+  const getComment = async () => {
+    try {
+      const res = await getByUserId(1);
+      setComment(res.data);
+    } catch (error) {
+      console.error("Error fetching comment data", error);
+    }
+  };
 
   const changeAction = (target) => {
     setAction(target);
-    if (target === "myrecipe") getData();
-    else {
+    if (target === "myrecipe") {
+      getData();
+    } else if (target === "mycomment") {
+      getComment();
     }
   };
 
@@ -67,12 +79,13 @@ const MyPage = () => {
                           <div className="recipe" key={index}>
                             <h3>{recipe.recipeTitle}</h3>
                             <p>By: {recipe.user.nickname}</p>{" "}
+                            {/* Access nickname from user object */}
                             <p>Food Name: {recipe.foodName}</p>
                             <p>Type ID: {recipe.typeId}</p>
                             <p>Serving Size: {recipe.servingSize}</p>
                             <p>Level: {recipe.level}</p>
                             <p>Cooking Time: {recipe.cookingTime}</p>
-                            <br></br>
+                            {/* Render other recipe details as needed */}
                           </div>
                         ))}
                       </div>
@@ -86,13 +99,19 @@ const MyPage = () => {
               <form name="mypage-form">
                 <div className="chef-content">
                   <div className="chef-content-list">
-                    <div className="chef-content-result">
-                      {/* <img src="https://recipe1.ezmember.co.kr/img/none_talk.png"></img> */}
-                      <p className="mypage-text1">댓글</p>
-                      <br></br>
-                      <p className="mypage-text">댓글</p>
+                    <div className="chef-content-result"></div>
+                    <div className="chef-content-input">
+                      <h2 className="title">댓글</h2>
+                      <div className="recipe-list">
+                        {comment.map((comment, index) => (
+                          <div className="recipe" key={index}>
+                            <h3>{comment.userId}</h3>
+                            <p>content: {comment.content}</p>
+                            <br></br>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="chef-content-input"></div>
                   </div>
                 </div>
               </form>{" "}
