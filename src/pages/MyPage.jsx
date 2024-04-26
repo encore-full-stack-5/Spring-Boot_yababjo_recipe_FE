@@ -61,7 +61,7 @@ const MyPage = () => {
                       {/* <img src="https://recipe1.ezmember.co.kr/img/none_recipe.png"></img> */}
                     </div>
                     <div className="chef-content-input">
-                      <h2>레시피</h2>
+                      <h2 className="title">레시피 목록</h2>
                       <div className="recipe-list">
                         {data.map((recipe, index) => (
                           <div className="recipe" key={index}>
