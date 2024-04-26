@@ -51,18 +51,11 @@ const AddRecipeInfo = () => {
         level,
         cookingTime,
         cookingTip,
+        userId: 1,
       });
       if (res.status === 200) {
-        const recipeId = res.data.recipeId;
+        const recipeId = res.data.id;
         console.log(recipeId);
-        // setRecipeId(recipeId);
-        for (const step of cookingSteps) {
-          await addCookingOrder({
-            recipeId,
-            order: cookingSteps.indexOf(step),
-            instruction: step.description,
-          });
-        }
         // await addCookingOrderHandler(recipeId); // 조리 순서로 넘어감
         alert("레시피 등록 성공!");
         handleNavigate("/");
@@ -84,23 +77,28 @@ const AddRecipeInfo = () => {
   //     });
   //   }
   // };
-  // const addCookingOrderHandler = async (recipeId) => {
-  //   try {
-  //     const orders = await addCookingOrder({
-  //       order,
-  //       instruction,
-  //       recipeId,
-  //     });
-  //     if (orders.status === 200) {
-  //       alert("조리 순서 등록 성공!");
-  //     } else {
-  //       alert("조리 순서 등록 실패...");
-  //     }
-  //   } catch (error) {
-  //     console.error("조리 순서 등록 오류", error);
-  //     alert("조리순서 등록 실패.. 빈 칸이 있는지 확인하세요");
-  //   }
-  // };
+  const addCookingOrderHandler = async (recipeId) => {
+    try {
+      const orders = await addCookingOrder({
+        order,
+        instruction,
+        recipeId,
+      });
+      if (orders.status === 200) {
+        alert("조리 순서 등록 성공!");
+      } else {
+        alert("조리 순서 등록 실패...");
+      }
+    } catch (error) {
+      console.error("조리 순서 등록 오류", error);
+      alert("조리순서 등록 실패.. 빈 칸이 있는지 확인하세요");
+    }
+  };
+
+  const saveClickButton = () => {
+    addRecipeHandler();
+    if (addRecipeHandler) addCookingOrderHandler();
+  };
 
   return (
     <div>
@@ -153,6 +151,10 @@ const AddRecipeInfo = () => {
         <CookingOrders
           cookingSteps={cookingSteps}
           setCookingSteps={setCookingSteps}
+          order={order}
+          setOrder={setOrder}
+          instruction={instruction}
+          setInstruction={setInstruction}
         />
       </div>
 
@@ -171,7 +173,7 @@ const AddRecipeInfo = () => {
       </div>
 
       <div className="p-4 border border-gray-200 font-bold text-xl bg-lime-100">
-        <button className="pl-10" onClick={addRecipeHandler}>
+        <button className="pl-10" onClick={saveClickButton}>
           저장
         </button>
         <button className="pl-20" onClick={() => handleNavigate("/")}>
