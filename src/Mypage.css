@@ -58,6 +58,7 @@ form {
   width: 895px;
   height: 632.48px;
   border: 1px solid gray;
+  background-color: #a8f0ae;
 }
 .chef-content-nav-tab {
   border-bottom: 1px solid #ccc;
@@ -124,4 +125,29 @@ form {
   color: #fff;
   background-color: #46ae4f;
   border: 1px solid #497725;
+}
+
+.recipe-list {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: flex-end;
+}
+
+.recipe {
+  background-color: #d2e4d3;
+  color: darkgreen;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  border: 1px solid rgb(72, 142, 72);
+  width: 300px;
+  height: auto;
+}
+
+.title {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  color: rgb(72, 142, 72);
 }
