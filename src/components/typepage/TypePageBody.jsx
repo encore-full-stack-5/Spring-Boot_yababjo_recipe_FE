@@ -19,6 +19,7 @@ const TypePageBody = ({ recipes }) => {
               {/* 사진란 */}
               <div>
                 <img
+                  value={recipe.id}
                   src="https://via.placeholder.com/200"
                   alt="recipe.recipeTitle"
                   onClick={() => handleNavigate("/recipe")}

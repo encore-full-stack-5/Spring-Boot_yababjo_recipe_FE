@@ -4,15 +4,11 @@ import Header from "../components/header/Header";
 
 function RecipePage() {
   const [inputValue, setInputValue] = useState("");
-  const [recipe, setRecipe] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-  const recipeDetail = async (id) => {
-    const recipe = await getRecipeById(id);
-    setRecipe(recipe.data);
-  };
+
   return (
     <>
       <Header></Header>
