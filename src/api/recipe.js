@@ -29,3 +29,13 @@ export const getRecipesByUserId = async (userId) => {
   const res = await api("/api/v1/recipe/" + userId, "get");
   return res;
 };
+
+export const getRecipesSortedByMethod = async (methodId) => {
+  const res = await api("/api/v1/recipe/method/" + methodId, "get");
+  return res;
+};
+
+export const getRecipesSortedByType = async (typeId) => {
+  const res = await api("/api/v1/recipe/type/" + typeId, "get");
+  return res;
+};
