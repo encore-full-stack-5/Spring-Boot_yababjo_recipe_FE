@@ -1,42 +1,44 @@
 import React, { useState } from "react";
 
-function CookingOrders({
-  cookingSteps,
-  setCookingSteps,
-  order,
-  setOrder,
-  instruction,
-  setInstruction,
-}) {
+function CookingOrders() {
+  const [cookingSteps, setCookingSteps] = useState([
+    { id: 1, description: "" },
+  ]);
+
   const addCookingStep = () => {
-    setCookingSteps([...cookingSteps, { id: Date.now(), description: "" }]);
+    setCookingSteps(cookingSteps.concat({ id: Date.now(), description: "" }));
   };
 
   const removeCookingStep = (id) => {
     setCookingSteps(cookingSteps.filter((step) => step.id !== id));
   };
 
-  const handleDescriptionChange = (id, description) => {
-    const newSteps = cookingSteps.map((step) =>
-      step.id === id ? { ...step, description } : step
-    );
-    setCookingSteps(newSteps);
-  };
-
   return (
-    <div>
+    <div className="p-10">
       {cookingSteps.map((step, index) => (
-        <div key={step.id}>
+        <div key={step.id} className="flex items-center mb-2">
           <textarea
-            value={step.description}
-            onChange={(e) => handleDescriptionChange(step.id, e.target.value)}
             className="w-full p-2 border rounded bg-gray-50"
+            value={step.description}
+            onChange={(e) => {
+              const newCookingSteps = [...cookingSteps];
+              newCookingSteps[index].description = e.target.value;
+              setCookingSteps(newCookingSteps);
+            }}
             placeholder={`조리 순서 ${index + 1}`}
-          />
-          <button onClick={() => removeCookingStep(step.id)}>X</button>
+            rows="2"
+          ></textarea>
+          <button
+            className="ml-2 p-1 "
+            onClick={() => removeCookingStep(step.id)}
+          >
+            X
+          </button>
         </div>
       ))}
-      <button onClick={addCookingStep}>순서 추가</button>
+      <button className="p-2 border rounded" onClick={addCookingStep}>
+        조리 순서 추가
+      </button>
     </div>
   );
 }

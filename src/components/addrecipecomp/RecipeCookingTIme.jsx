@@ -1,6 +1,6 @@
 import React from "react";
 
-const RecipeCookingTime = ({ cookingTime, setCookingTime }) => {
+const RecipeCookingTime = () => {
   return (
     <>
       <input
@@ -8,8 +8,6 @@ const RecipeCookingTime = ({ cookingTime, setCookingTime }) => {
         type="number"
         placeholder="조리시간(시간단위로 숫자로 입력)"
         min="0"
-        value={cookingTime}
-        onChange={(e) => setCookingTime(e.target.value)}
       />
     </>
   );

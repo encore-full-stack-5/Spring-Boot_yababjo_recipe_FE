@@ -5,13 +5,8 @@ import email_icon from "../assets/icon/password.png";
 import password_icon from "../assets/icon/person.png";
 import { login } from "../api/auth";
 import { signup } from "../api/auth";
-import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
-  const navigate = useNavigate();
-  const handleNavigate = (path) => {
-    navigate(path);
-  };
   const [action, setAction] = useState("Login");
   const [nickName, setNickName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,7 +17,6 @@ const LoginSignup = () => {
       const res = await login({ nickName, password });
       if (res.status === 200) {
         alert("로그인 완료!");
-        handleNavigate("/mypage");
       } else {
         alert("로그인 실패!");
       }
@@ -108,47 +102,21 @@ const LoginSignup = () => {
         )}
       </div>
       <div className="submit-container">
-        {action === "Login" ? (
-          <>
-            <div
-              className="submit"
-              onClick={() => {
-                handleLogin();
-              }}
-            >
-              Login
-            </div>
-            <div
-              className="submit-gray"
-              onClick={() => {
-                setAction("Sign up");
-              }}
-            >
-              Sign up
-            </div>
-          </>
-        ) : (
-          <>
-            <div
-              className="submit-gray"
-              onClick={() => {
-                setAction("Login");
-              }}
-            >
-              Log in
-            </div>
-            <div
-              className="submit"
-              onClick={() => {
-                handleSignup();
-              }}
-            >
-              Sign up
-            </div>
-          </>
-        )}
+        <div
+          className={action === "Login" ? "submit gray" : "submit"}
+          onClick={() => setAction("Sign Up")}
+        >
+          Sign Up
+        </div>
+        <div
+          className="submit"
+          onClick={action === "Login" ? handleLogin : handleSignup}
+        >
+          {action}
+        </div>
       </div>
     </div>
   );
 };
+
 export default LoginSignup;

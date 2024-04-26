@@ -18,15 +18,12 @@
   font-size: 16px;
   line-height: 22.85px;
   position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 5px;
+  gap: 1px;
 }
 .nav-tab {
   padding-left: 0;
   margin-bottom: 0;
-  width: 400px;
+  width: 160px;
   height: 50px;
   list-style: none;
   background-color: rgb(209, 209, 209);
@@ -58,7 +55,6 @@ form {
   width: 895px;
   height: 632.48px;
   border: 1px solid gray;
-  background-color: #a8f0ae;
 }
 .chef-content-nav-tab {
   border-bottom: 1px solid #ccc;
@@ -106,48 +102,4 @@ form {
 .chef-content-result img {
   max-width: 200px;
   height: auto;
-}
-
-.mypage-text {
-  font-size: 20px;
-}
-
-.mypage-text1 {
-  font-size: 20px;
-}
-
-.my-page-content-btn {
-  padding: 10px 30px;
-  font-size: 18px;
-  line-height: 1.3333333;
-  border-radius: 3px;
-  margin: 0 4px;
-  color: #fff;
-  background-color: #46ae4f;
-  border: 1px solid #497725;
-}
-
-.recipe-list {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  justify-content: flex-end;
-}
-
-.recipe {
-  background-color: #d2e4d3;
-  color: darkgreen;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 20px;
-  border: 1px solid rgb(72, 142, 72);
-  width: 300px;
-  height: auto;
-}
-
-.title {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 30px;
-  text-align: center;
-  color: rgb(72, 142, 72);
 }
