@@ -39,3 +39,8 @@ export const getRecipesSortedByType = async (typeId) => {
   const res = await api("/api/v1/recipe/type/" + typeId, "get");
   return res;
 };
+
+export const getRecipeById = async (id) => {
+  const res = await api("/api/v1/recipe/detail/" + id, "get");
+  return res;
+};

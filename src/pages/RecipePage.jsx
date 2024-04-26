@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { getRecipeById } from "../api/recipe";
 import Header from "../components/header/Header";
 
 function RecipePage() {
   const [inputValue, setInputValue] = useState("");
+  const [recipe, setRecipe] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
+  const recipeDetail = async (id) => {
+    const recipe = await getRecipeById(id);
+    setRecipe(recipe.data);
+  };
   return (
     <>
       <Header></Header>
@@ -21,13 +26,13 @@ function RecipePage() {
             alt=""
           />
         </div>
-        <div className="">작성자명</div>
+        <div className="">요리명</div>
         <div className="">레시피명</div>
         <div className="">조리 팁</div>
         <div className="flex m-auto">
-          <div className="pr-10">몇 인분 </div>
+          <div className="pr-10">몇 인분</div>
           <div className="pr-10">조리 시간 </div>
-          <div className="pr-10">난이도 </div>
+          <div className="pr-10">난이도</div>
         </div>
       </div>
 
