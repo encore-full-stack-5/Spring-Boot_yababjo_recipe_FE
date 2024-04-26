@@ -30,6 +30,7 @@ export const getRecipesByUserId = async (userId) => {
   return res;
 };
 
+
 export const getRecipesSortedByMethod = async (methodId) => {
   const res = await api("/api/v1/recipe/method/" + methodId, "get");
   return res;
