@@ -19,3 +19,8 @@ export const getRecipesSortedByCreateAt = async () => {
   const res = await api("/api/v1/recipe/recently", "get");
   return res;
 };
+
+export const getRecipesByUserId = async (userId) => {
+  const res = await api("/api/v1/recipe/" + userId, "get");
+  return res;
+};
