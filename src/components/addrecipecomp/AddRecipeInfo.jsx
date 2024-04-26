@@ -148,6 +148,7 @@ const AddRecipeInfo = () => {
         조리 순서
       </div>
       <div>
+        {/* 에러 발생 부분 */}
         <CookingOrders
           cookingSteps={cookingSteps}
           setCookingSteps={setCookingSteps}
