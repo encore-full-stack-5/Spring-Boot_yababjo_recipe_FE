@@ -1,11 +1,33 @@
+import { Button } from "bootstrap";
 import React from "react";
 import { useState } from "react";
+import {
+  getRecipesSortedByMethod,
+  getRecipesSortedByType,
+  getRecipesSortedByCreateAt,
+} from "../../api/recipe";
 
-const TypePageNav = () => {
+const TypePageNav = ({ setRecipes }) => {
   const [isTableVisible, setTableVisible] = useState(true);
   const toggleTableVisibility = () => {
     setTableVisible(!isTableVisible);
   };
+  const handleTypeClick = async (typeId) => {
+    const recipes = await getRecipesSortedByType(typeId);
+    setRecipes(recipes.data);
+  };
+
+  const handleMethodClick = async (methodId) => {
+    const recipes = await getRecipesSortedByMethod(methodId);
+    console.log(recipes.data);
+    setRecipes(recipes.data);
+  };
+
+  const handleAllClick = async () => {
+    const recipes = await getRecipesSortedByCreateAt();
+    setRecipes(recipes.data);
+  };
+
   return (
     <>
       <div className="p-5">
@@ -14,43 +36,45 @@ const TypePageNav = () => {
             <thead className="float-left">
               <tr className="block p-3">
                 <th className="text-lime-600 block py-3">종류별</th>
-                <th className="text-lime-600 block py-6 ">방법별</th>
+                <th className="text-lime-600 block py-6">방법별</th>
               </tr>
             </thead>
             <tbody className="block overflow-x-hidden whitespace-nowrap">
               <tr className="block px-5 py-3 ">
-                <td className="p-3 hover:text-lime-500 cursor-pointer">전체</td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  밑반찬
+                  <button onClick={() => handleAllClick()}>전체</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  메인반찬
+                  <button onClick={() => handleTypeClick(2)}>밑반찬</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  국/찌개
+                  <button onClick={() => handleTypeClick(3)}>메인반찬</button>
                 </td>
                 <td className="p-3 hover:text-lime-500 cursor-pointer">
-                  디저트
+                  <button onClick={() => handleTypeClick(4)}>국/찌개</button>
+                </td>
+                <td className="p-3 hover:text-lime-500 cursor-pointer">
+                  <button onClick={() => handleTypeClick(5)}>디저트</button>
                 </td>
               </tr>
               <tr className="block px-5 p-3">
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  전체
+                  <button onClick={() => handleAllClick()}>전체</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  볶음
+                  <button onClick={() => handleMethodClick(2)}>볶음</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  끓이기
+                  <button onClick={() => handleMethodClick(3)}>끓이기</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  부침
+                  <button onClick={() => handleMethodClick(4)}>부침</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  튀김
+                  <button onClick={() => handleMethodClick(5)}>튀김</button>
                 </td>
                 <td className="px-3 hover:text-lime-500 cursor-pointer">
-                  무침
+                  <button onClick={() => handleMethodClick(6)}>무침</button>
                 </td>
               </tr>
             </tbody>
