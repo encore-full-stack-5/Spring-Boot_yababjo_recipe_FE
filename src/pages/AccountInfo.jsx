@@ -9,27 +9,21 @@ function AccountInfo() {
       <h2 className="account-page-title">회원정보 수정</h2>
       <div className="mng-account-container m-auto">
         <div className="mng-account-edit-box">
-          <div className="wrapper">
-            <input
-              className="mng-account-edit-input"
-              placeholder="이메일 수정"
-            ></input>
-            <button className="submit">수정</button>
-          </div>
-
-          <div className="box-line"></div>
-          <div className="wrapper">
-            <input
-              className="mng-account-edit-input"
-              placeholder="닉네임 수정"
-            ></input>
-            <button className="submit">수정</button>
-          </div>
-
+          <p className="mng-account-edit-option">
+            {" "}
+            이메일 수정{" "}
+            <button className="mng-account-edit-button">수정</button>
+          </p>
           <div className="box-line"></div>
           <p className="mng-account-edit-option">
             {" "}
-            회원탈퇴 <button className="submit">탈퇴</button>
+            닉네임 수정{" "}
+            <button className="mng-account-edit-button">수정</button>
+          </p>
+          <div className="box-line"></div>
+          <p className="mng-account-edit-option">
+            {" "}
+            회원탈퇴 <button className="mng-account-edit-button">탈퇴</button>
           </p>
         </div>
       </div>
